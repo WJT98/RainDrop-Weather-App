@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		743390C91F8C1FFE00DB0B73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743390C81F8C1FFE00DB0B73 /* AppDelegate.swift */; };
-		743390CB1F8C1FFE00DB0B73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743390CA1F8C1FFE00DB0B73 /* ViewController.swift */; };
 		743390CE1F8C1FFE00DB0B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743390CC1F8C1FFE00DB0B73 /* Main.storyboard */; };
 		743390D01F8C1FFE00DB0B73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 743390CF1F8C1FFE00DB0B73 /* Assets.xcassets */; };
 		743390D31F8C1FFE00DB0B73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743390D11F8C1FFE00DB0B73 /* LaunchScreen.storyboard */; };
 		743390DE1F8C1FFE00DB0B73 /* RainDropTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743390DD1F8C1FFE00DB0B73 /* RainDropTests.swift */; };
 		743390E91F8C1FFE00DB0B73 /* RainDropUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743390E81F8C1FFE00DB0B73 /* RainDropUITests.swift */; };
+		743390F71F8C214600DB0B73 /* DailyForecastsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743390F61F8C214600DB0B73 /* DailyForecastsTableViewController.swift */; };
+		743390F91F8C215D00DB0B73 /* WeatherForecasts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743390F81F8C215D00DB0B73 /* WeatherForecasts.swift */; };
+		743390FB1F8C4B3C00DB0B73 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743390FA1F8C4B3C00DB0B73 /* SettingsTableViewController.swift */; };
+		743391011F8C575000DB0B73 /* CurrentForecastsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743391001F8C575000DB0B73 /* CurrentForecastsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +39,6 @@
 /* Begin PBXFileReference section */
 		743390C51F8C1FFE00DB0B73 /* RainDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RainDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		743390C81F8C1FFE00DB0B73 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		743390CA1F8C1FFE00DB0B73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		743390CD1F8C1FFE00DB0B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		743390CF1F8C1FFE00DB0B73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		743390D21F8C1FFE00DB0B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +49,10 @@
 		743390E41F8C1FFE00DB0B73 /* RainDropUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RainDropUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		743390E81F8C1FFE00DB0B73 /* RainDropUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainDropUITests.swift; sourceTree = "<group>"; };
 		743390EA1F8C1FFE00DB0B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		743390F61F8C214600DB0B73 /* DailyForecastsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastsTableViewController.swift; sourceTree = "<group>"; };
+		743390F81F8C215D00DB0B73 /* WeatherForecasts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecasts.swift; sourceTree = "<group>"; };
+		743390FA1F8C4B3C00DB0B73 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		743391001F8C575000DB0B73 /* CurrentForecastsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentForecastsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +104,11 @@
 			isa = PBXGroup;
 			children = (
 				743390C81F8C1FFE00DB0B73 /* AppDelegate.swift */,
-				743390CA1F8C1FFE00DB0B73 /* ViewController.swift */,
+				743391001F8C575000DB0B73 /* CurrentForecastsViewController.swift */,
+				743390F61F8C214600DB0B73 /* DailyForecastsTableViewController.swift */,
+				743390F81F8C215D00DB0B73 /* WeatherForecasts.swift */,
 				743390CC1F8C1FFE00DB0B73 /* Main.storyboard */,
+				743390FA1F8C4B3C00DB0B73 /* SettingsTableViewController.swift */,
 				743390CF1F8C1FFE00DB0B73 /* Assets.xcassets */,
 				743390D11F8C1FFE00DB0B73 /* LaunchScreen.storyboard */,
 				743390D41F8C1FFE00DB0B73 /* Info.plist */,
@@ -259,8 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				743390CB1F8C1FFE00DB0B73 /* ViewController.swift in Sources */,
+				743390F71F8C214600DB0B73 /* DailyForecastsTableViewController.swift in Sources */,
+				743391011F8C575000DB0B73 /* CurrentForecastsViewController.swift in Sources */,
+				743390FB1F8C4B3C00DB0B73 /* SettingsTableViewController.swift in Sources */,
 				743390C91F8C1FFE00DB0B73 /* AppDelegate.swift in Sources */,
+				743390F91F8C215D00DB0B73 /* WeatherForecasts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
