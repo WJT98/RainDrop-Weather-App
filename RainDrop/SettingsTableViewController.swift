@@ -10,20 +10,23 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController,UITextFieldDelegate {
 
-    @IBAction func defaultCity(_ sender: UITextField) {
-    }
-    
+
     @IBAction func celsiusSwitch(_ sender: UISwitch) {
     }
 
+    @IBAction func textFieldChanged(_ sender: UITextField) {
+        if let defaultLocation : String = defaultCity.text {
+        UserDefaults.standard.set(defaultLocation, forKey: "defaultLocation")
+        }
+    }
     
-    func textFieldDidChange(_ textField: UITextField) {
-        
-    }
-    func didChangeText(textField:UITextField) {
-    }
+    @IBOutlet weak var defaultCity: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let location =  UserDefaults.standard.string(forKey: "defaultLocation") {
+            defaultCity.text = location
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

@@ -16,6 +16,9 @@ class DailyForecastsTableViewController: UITableViewController,UISearchBarDelega
     var dailyForecasts = [dailyData]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let location =  UserDefaults.standard.string(forKey: "defaultLocation") {
+        getCoordinates(locationString: location)
+        }
         searchBar.delegate = self
         
         // Uncomment the following line to preserve selection between presentations
@@ -25,47 +28,49 @@ class DailyForecastsTableViewController: UITableViewController,UISearchBarDelega
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("1")
-        searchBar.resignFirstResponder()
-        if let locationString = searchBar.text, !locationString.isEmpty {
-            CLGeocoder().geocodeAddressString(locationString) { (placemarks:[CLPlacemark]?, error:Error?) in
-                if error == nil {
-                    if let locationString = placemarks?.first?.location {
-                        print("2")
-                        self.updateDailyForecasts(withLocation: locationString.coordinate)
-                    }
-                }
-            }
-        }
-    }
     
-    func updateDailyForecasts(withLocation location: CLLocationCoordinate2D) {
-        let path = "https://api.darksky.net/forecast/a1be0ea6be0bef0fb1d19302c8acb208/" + "\(location.latitude),\(location.longitude)"
-        print("\(path)")
+    func updateCurrentForecast(latitude: Double, longitude: Double, location: CLPlacemark) {
+        let path = "https://api.darksky.net/forecast/a1be0ea6be0bef0fb1d19302c8acb208/" + "\(latitude),\(longitude)"
         guard let jsonURL = URL(string: path) else {return}
-        print("3")
         URLSession.shared.dataTask(with: jsonURL) { data, urlResponse, error in
             guard let data = data, error == nil, urlResponse != nil else {
-                print("Something wrong")
                 return
             }
-            print("downloaded")
             do {
                 let decoder = JSONDecoder()
-              
                 let dailyForecastData = try decoder.decode(WeatherForecasts.self, from: data)
                 self.dailyForecasts = dailyForecastData.daily.data
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
             } catch{
-                print("something wrong after downloading")
             }
             }.resume()
     }
     
+    func getCoordinates(locationString:String) {
+        CLGeocoder().geocodeAddressString(locationString) { (placemarks:[CLPlacemark]?, error:Error?) in
+            guard let locationCoordinate = placemarks?.first?.location?.coordinate, let location = placemarks?.first
+                else {
+                    // create the alery
+                    let alert = UIAlertController(title: "Location not found", message: "Please enter a valid location", preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    // add the actions (buttons)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    
+                    // show the alert
+                    self.present(alert, animated: true, completion: nil)
+                    return
+            }
+            self.updateCurrentForecast(latitude: locationCoordinate.latitude, longitude: locationCoordinate.longitude, location: location)
+        }
+    }
     
+    func searchBarSearchButtonClicked(_ searchBar2: UISearchBar) {        searchBar2.resignFirstResponder()
+        if let locationString = searchBar2.text, !locationString.isEmpty {
+            getCoordinates(locationString: locationString)
+        }
+    }
     
     func fahrenheitToC (temp: Double) -> Double{
         return (temp - 32 ) * 5 / 9
@@ -94,7 +99,7 @@ class DailyForecastsTableViewController: UITableViewController,UISearchBarDelega
         let weatherObject = dailyForecasts[indexPath.section]
         
         cell.textLabel?.text = weatherObject.summary
-        cell.detailTextLabel?.text = "High of : \(Int(weatherObject.temperatureMax)) °F, Low of :\(Int(weatherObject.temperatureMin))"
+        cell.detailTextLabel?.text = "High of : \(Int(weatherObject.temperatureMax)) °F, Low of :\(Int(weatherObject.temperatureMin)) + °F"
         cell.imageView?.image = UIImage(named: weatherObject.icon)
      // Configure the cell...
         
