@@ -45,12 +45,12 @@ class CurrentForecastsViewController: UIViewController,UISearchBarDelegate {
                 let decoder = JSONDecoder()
                 let currentForecastData = try decoder.decode(WeatherForecasts.self, from: data)
                 DispatchQueue.main.async {
-                    self.tempLbl.text = String(currentForecastData.currently.temperature)
+                    self.tempLbl.text = String(currentForecastData.currently.temperature) + " F"
                     self.currentForecastIcon.image = UIImage(named: currentForecastData.currently.icon)
-                    self.apparentTempLbl.text=String(currentForecastData.currently.apparentTemperature)
-                    self.windLbl.text = String(currentForecastData.currently.windSpeed)
+                    self.apparentTempLbl.text=String(currentForecastData.currently.apparentTemperature) + " F"
+                    self.windLbl.text = String(currentForecastData.currently.windSpeed) + " KPH"
                     //self.cityLbl = location
-                    self.humidityLbl.text = String(currentForecastData.currently.humidity)
+                    self.humidityLbl.text = String(currentForecastData.currently.humidity * 100) + "%"
                     self.cityLbl.text = location.name! + ", " + location.country!
                 }
             } catch{

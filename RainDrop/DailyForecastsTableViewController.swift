@@ -99,7 +99,7 @@ class DailyForecastsTableViewController: UITableViewController,UISearchBarDelega
         let weatherObject = dailyForecasts[indexPath.section]
         
         cell.textLabel?.text = weatherObject.summary
-        cell.detailTextLabel?.text = "High of : \(Int(weatherObject.temperatureMax)) °F, Low of :\(Int(weatherObject.temperatureMin)) + °F"
+        cell.detailTextLabel?.text = "High of : \(Int(weatherObject.temperatureMax)) °F, Low of :\(Int(weatherObject.temperatureMin)) °F"
         cell.imageView?.image = UIImage(named: weatherObject.icon)
      // Configure the cell...
         
